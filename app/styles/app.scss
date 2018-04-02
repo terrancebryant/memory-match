@@ -1,7 +1,23 @@
 $accent-color: #2ecc71;
+$warning-color: #ffeeba;
+$white: #FFF;
+
+$container-width: 1280px;
+
+$body-bg: #f5f5f7;
+
+$button-text-color: $white;
+
+$card-bg: $white;
+$card-text-color: #8a8a8a;
+$card-hover-text-color: $white;
+$card-font-size: 150px;
+
+$winner-text-color: $white;
+
 
 body {
-  background: #f5f5f7;
+  background: $body-bg;
   font: 18px/30px Lato, sans-serif;
 }
 .container {
@@ -11,15 +27,15 @@ body {
   grid-template-rows: repeat(2, minmax(15rem, auto));
   padding: 2rem;
   margin: auto;
-  max-width: 1280px;
+  max-width: $container-width;
 }
 .container__card {
   align-items: center;
-  background: white;
+  background: $card-bg;
   border: 4px solid #eee;
   border-radius: 3px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  color: #8a8a8a;
+  color: $card-text-color;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -27,24 +43,31 @@ body {
   transition-duration: 0.3s;
   transition-property: transform;
 
+  .container__card--value {
+    font-size: $card-font-size;
+    span {
+      color: $card-hover-text-color;
+    }
+  }
+
   &:hover {
     background: lighten( $accent-color, 10% );
     transform: scale(1.1);
     border-color: $accent-color;
-    color: white;
+    color: $card-hover-text-color;
     outline: none;
   }
 }
 
 .container__winner {
-  grid-column: 1/-1;
-  font-size: 150px;
   align-items: center;
-  color: white;
-  display: flex;
-  justify-content: center;
   background: lighten( $accent-color, 10% );
   border-color: $accent-color;
+  color: $winner-text-color;
+  display: flex;
+  font-size: $card-font-size;
+  grid-column: 1/-1;
+  justify-content: center;
 }
 
 .btn {
@@ -67,40 +90,47 @@ body {
 }
 
 .alert {
-  position: relative;
-  padding: .75rem 1.25rem;
-  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: .25rem;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 3;
   display: flex;
+  left: 0;
+  margin-bottom: 1rem;
+  padding: .75rem 1.25rem;
+  position: relative;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 3;
 }
 .alert--success {
-  color: white;
-  background-color: lighten( $accent-color, 10% );;
+  color: $button-text-color;
+  background-color: lighten( $accent-color, 10% );
   border-color: $accent-color;
 }
 
 .alert--warning {
+  background-color: lighten( $warning-color, 10% );
+  border-color: $warning-color;
   color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
-}
-.flash-message {
-  display: flex;
-  padding: .5rem 2rem;
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
 }
 
-.value {
-  font-size: 150px;
-  span {
+.navbar {
+  align-items: center;
+  background: $white;
+  border-bottom: 4px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  .navbar__logo {
+    background: $accent-color;
+    border-radius: 50%;
     color: white;
+    font-size: 30px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
   }
 }
