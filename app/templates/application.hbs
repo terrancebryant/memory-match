@@ -1,5 +1,20 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
 {{outlet}}
+
+{{#if matchMessage}}
+  <div class="alert  {{if status "alert--success" "alert--warning"}}">{{matchMessage}}</div>
+{{/if}}
+
+{{#if newGame}}
+<button class="btn btn--success" {{action 'newGame'}}>New Game</button>
+{{/if}}
+
+{{input type="text" placeholder="Player 1" value=player1}}
+
+{{input type="text" placeholder="Player 2" value=player2}}
+
+<div class="container">
+  {{#if winner}}<div class="container__winner">Winner! Winner</div>{{/if}}
+  {{#each cards as |card|}}
+    {{match-card card=card action=(action 'matcher' card)}}
+  {{/each}}
+</div>
